@@ -17,11 +17,11 @@ class LoginController extends Controller
     {
         try {
             if (!Auth::attempt($request->only('email', 'password'))) {
-                return response()->json(['message' => 'Unauthorized'], JsonResponse::HTTP_UNAUTHORIZED);
+                return response()->json(['message' => __('auth.failed')], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
             $user = Auth::user();
-            $token = $user->createToken('delivery')->accessToken;
+            $token = $user->createToken('ead')->accessToken;
 
             return response()->json(['token' => $token], JsonResponse::HTTP_OK);
         } catch (Exception $e) {

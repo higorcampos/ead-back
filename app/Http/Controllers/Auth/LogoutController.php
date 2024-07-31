@@ -17,7 +17,6 @@ class LogoutController extends Controller
     {
         try {
             $user = Auth::guard('api')->user();
-            dd($user);
             $user->token()->revoke();
 
             return response()->json(['message' => 'Successfully logged out'], JsonResponse::HTTP_OK);
