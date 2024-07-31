@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Log;
 
 use Exception;
 
+
 class LoginController extends Controller
 {
     public function __invoke(LoginRequest $request): JsonResponse
     {
         try {
             if (!Auth::attempt($request->only('email', 'password'))) {
-                return response()->json(['message' => __('auth.failed')], JsonResponse::HTTP_UNAUTHORIZED);
+                return response()->json(['message' => __('auth.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
             $user = Auth::user();

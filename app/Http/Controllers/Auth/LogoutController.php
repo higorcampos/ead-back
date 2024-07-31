@@ -19,7 +19,7 @@ class LogoutController extends Controller
             $user = Auth::guard('api')->user();
             $user->token()->revoke();
 
-            return response()->json(['message' => 'Successfully logged out'], JsonResponse::HTTP_OK);
+            return response()->json(['message' => __('auth.logged')], JsonResponse::HTTP_OK);
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['message' => $e->getMessage()], $e->getCode() ?: JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
