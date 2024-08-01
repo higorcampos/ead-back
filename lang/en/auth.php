@@ -18,4 +18,5 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'unauthorized' => 'Unauthorized',
     'logged' => 'Logged out successfully',
+    'not_autorized' => 'You are not authorized to access this resource',
 ];

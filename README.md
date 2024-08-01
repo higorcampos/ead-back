@@ -70,3 +70,75 @@ Para criar um sistema de Educação a Distância (EAD) eficaz e competitivo, é 
 ### Script Básico para Criação de um EAD
 
 Criar um sistema EAD eficaz envolve não apenas o desenvolvimento de uma plataforma robusta, mas também uma compreensão profunda das necessidades do público-alvo e uma estratégia de marketing bem elaborada. Seguindo esse roteiro, você estará bem encaminhado para desenvolver um EAD competitivo e bem-sucedido.
+
+Para um sistema de EAD (Ensino a Distância) completo, você precisará definir uma série de controles de acesso (ACLs) e papéis para garantir que cada usuário tenha acesso apenas às funcionalidades e dados que lhes são permitidos. Abaixo estão alguns papéis comuns e seus respectivos ACLs para um sistema de EAD:
+
+### Papéis Comuns
+
+1. **Administrator**
+2. **Teacher**
+3. **Student**
+4. **Support**
+5. **Guest**
+
+### ACLs para Cada Papel
+
+#### Administrator
+
+1. **Gerenciamento de Usuários**
+    - Criar, editar, excluir usuários
+    - Atribuir papéis aos usuários
+2. **Gerenciamento de Cursos**
+    - Criar, editar, excluir cursos
+    - Atribuir professores aos cursos
+3. **Gerenciamento de Conteúdo**
+    - Adicionar, editar, excluir materiais de cursos
+    - Publicar e despublicar conteúdos
+4. **Relatórios**
+    - Acessar relatórios de desempenho dos cursos e dos alunos
+5. **Configurações do Sistema**
+    - Alterar configurações gerais do sistema
+6. **Financeiro**
+    - Gerenciar pagamentos e faturas
+
+#### Teacher
+
+1. **Gerenciamento de Cursos**
+    - Criar e editar seus próprios cursos
+    - Adicionar materiais e recursos aos cursos
+    - Publicar e despublicar conteúdos do curso
+2. **Gerenciamento de Alunos**
+    - Ver lista de alunos matriculados em seus cursos
+    - Avaliar e dar feedback aos alunos
+    - Enviar mensagens para alunos
+3. **Relatórios**
+    - Acessar relatórios de desempenho dos alunos em seus cursos
+
+#### Student
+
+1. **Acesso aos Cursos**
+    - Visualizar e acessar os cursos em que está matriculado
+    - Acessar materiais de curso e recursos
+2. **Interatividade**
+    - Participar de fóruns e discussões
+    - Enviar tarefas e projetos
+    - Fazer quizzes e exames
+3. **Perfil**
+    - Gerenciar seu próprio perfil
+    - Ver suas notas e feedbacks
+
+#### Support
+
+1. **Gerenciamento de Suporte**
+    - Acessar e responder tickets de suporte
+    - Enviar mensagens para usuários
+2. **Acesso Restrito a Dados de Usuários**
+    - Ver informações de usuários para suporte
+    - Não pode alterar dados de usuários ou conteúdos
+
+#### Guest
+
+1. **Acesso Público**
+    - Ver informações públicas sobre cursos
+    - Inscrever-se em cursos (se permitido)
+    - Acessar materiais gratuitos (se disponível)
