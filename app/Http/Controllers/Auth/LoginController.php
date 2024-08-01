@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 use Exception;
-
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
@@ -21,10 +21,16 @@ class LoginController extends Controller
                 return response()->json(['message' => __('auth.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
             }
 
-            $user = Auth::user();
-            $token = $user->createToken('ead')->accessToken;
+            $response = Http::post(env('APP_URL') . '/oauth/token', [
+                'grant_type' => 'password',
+                'client_id' => env('PASSPORT_PASSWORD_CLIENT_ID'),
+                'client_secret' => env('PASSPORT_PASSWORD_SECRET'),
+                'username' => $request->email,
+                'password' => $request->password,
+                'scope' => '',
+            ]);
 
-            return response()->json(['token' => $token], JsonResponse::HTTP_OK);
+            return response()->json($response->json(), JsonResponse::HTTP_OK);
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['message' => $e->getMessage()], $e->getCode() ?: JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
