@@ -1,5 +1,3 @@
-Para criar um sistema de Educação a Distância (EAD) eficaz e competitivo, é importante analisar os principais EADs disponíveis atualmente e identificar suas funcionalidades chave. Em seguida, podemos montar um roteiro para desenvolver um EAD que inclua essas funcionalidades, além de estratégias de vendas. Aqui está uma análise e um roteiro básico:
-
 ### Análise dos Principais EADs Atuais
 
 #### 1. Coursera
@@ -29,15 +27,8 @@ Para criar um sistema de Educação a Distância (EAD) eficaz e competitivo, é 
 
 ### Roteiro para Desenvolvimento de um EAD
 
-#### 1. Planejamento
+#### 1. Desenvolvimento da Plataforma
 
--   **Identificação do Público-Alvo**: Definir quem são os alunos, suas necessidades e preferências.
--   **Escolha das Disciplinas e Cursos**: Selecionar os tópicos e cursos mais demandados.
--   **Parcerias**: Considerar parcerias com instituições de ensino e especialistas.
-
-#### 2. Desenvolvimento da Plataforma
-
--   **Tecnologia**: Escolher tecnologias adequadas como Laravel para o backend, Angular para o frontend, e um sistema de banco de dados robusto.
 -   **Funcionalidades Básicas**:
     -   **Autenticação e Autorização**: Registro, login, perfis de usuário.
     -   **Gestão de Cursos**: Criação, edição, remoção de cursos.
@@ -58,20 +49,6 @@ Para criar um sistema de Educação a Distância (EAD) eficaz e competitivo, é 
 -   **Beta Testing**: Convidar um grupo de usuários para testar a plataforma e fornecer feedback.
 -   **Correções e Melhorias**: Ajustar a plataforma com base no feedback recebido.
 -   **Lançamento Oficial**: Lançamento da plataforma para o público em geral.
-
-#### 5. Estratégias de Venda e Marketing
-
--   **Modelo de Preços**: Definir se será por assinatura, compra única, ou freemium (gratuito com opções pagas).
--   **Promoções e Descontos**: Oferecer descontos iniciais para atrair os primeiros usuários.
--   **Marketing Digital**: Campanhas em redes sociais, Google Ads, e-mail marketing.
--   **Parcerias e Afiliados**: Estabelecer parcerias com influenciadores e afiliados para promoção.
--   **Testemunhos e Depoimentos**: Utilizar depoimentos de alunos satisfeitos para atrair novos usuários.
-
-### Script Básico para Criação de um EAD
-
-Criar um sistema EAD eficaz envolve não apenas o desenvolvimento de uma plataforma robusta, mas também uma compreensão profunda das necessidades do público-alvo e uma estratégia de marketing bem elaborada. Seguindo esse roteiro, você estará bem encaminhado para desenvolver um EAD competitivo e bem-sucedido.
-
-Para um sistema de EAD (Ensino a Distância) completo, você precisará definir uma série de controles de acesso (ACLs) e papéis para garantir que cada usuário tenha acesso apenas às funcionalidades e dados que lhes são permitidos. Abaixo estão alguns papéis comuns e seus respectivos ACLs para um sistema de EAD:
 
 ### Papéis Comuns
 
