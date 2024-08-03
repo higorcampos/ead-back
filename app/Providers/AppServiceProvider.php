@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\User\UserRepositoryContract;
+use App\Repositories\User\UserRepositoryEloquent;
+use App\Services\User\UserService;
+use App\Services\User\UserServiceContract;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -12,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
     }
 
     /**
@@ -20,9 +23,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Passport::tokensExpireIn(now()->addDays(15));
-        Passport::refreshTokensExpireIn(now()->addDays(30));
-        Passport::personalAccessTokensExpireIn(now()->addMonths(6));
-        Passport::enablePasswordGrant();
     }
 }

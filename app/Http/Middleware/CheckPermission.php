@@ -23,7 +23,7 @@ class CheckPermission
         $id = Role::where('name', $permission)->pluck('id')->first();
 
         if (!$user->hasPermission($id)) {
-            return response()->json(['message' => __('auth.not_autorized')], JsonResponse::HTTP_FORBIDDEN);
+            return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_FORBIDDEN);
         }
 
         return $next($request);

@@ -20,11 +20,11 @@ class AuthMiddleware
         try {
             $user = Auth::guard('api')->user();
         } catch (\Exception $e) {
-            return response()->json(['message' => __('auth.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
+            return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
         if (!$user) {
-            return response()->json(['message' => __('auth.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
+            return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
         return $next($request);
