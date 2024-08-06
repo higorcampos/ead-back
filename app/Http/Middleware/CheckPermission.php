@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Role;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,9 +19,7 @@ class CheckPermission
     {
         $user = Auth::guard('api')->user();
 
-        $id = Role::where('name', $permission)->pluck('id')->first();
-
-        if (!$user->hasPermission($id)) {
+        if ($user->role != $permission) {
             return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_FORBIDDEN);
         }
 

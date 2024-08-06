@@ -8,6 +8,7 @@ Route::post('/register-user', RegisterUserController::class)->name('register.use
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', LogoutController::class)->name('auth.logout');
-    Route::middleware('permission:administrator')->group(function () {
+    Route::middleware('permission:ADMINISTRATOR')->group(function () {
+        Route::get('/test', LogoutController::class)->name('auth.logout');
     });
 });
