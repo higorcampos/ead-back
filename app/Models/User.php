@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -47,23 +48,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    /**
-     * Relationship with the UserPermission model.
-     */
-    public function userPermissions(): HasMany
-    {
-        return $this->hasMany(UsersPermission::class);
-    }
-
-    /**
-     * Relationship with the Role model.
-     */
-    public function hasPermission(string $roleId): bool
-    {
-        return $this->userPermissions()
-            ->where('role_id', $roleId)
-            ->exists();
     }
 }

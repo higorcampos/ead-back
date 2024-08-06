@@ -29,11 +29,12 @@ class UserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', function ($attribute, $value, $fail) {
                 if (count(explode(' ', $value)) < 2) {
-                    $fail('O nome completo deve incluir pelo menos um nome e um sobrenome.');
+                    $fail(__('validation.custom.full_name'));
                 }
             }],
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'role' => 'string|in:' . implode(',', UserRoleEnums::getAllRoles()),
         ];
     }
 

@@ -160,7 +160,6 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
-    'correct_data' => 'Forneça dados corretos.',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +176,7 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'full_name' => 'The name must include at least one name and one last name.',
     ],
 
     /*

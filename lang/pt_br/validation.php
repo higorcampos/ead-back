@@ -157,7 +157,6 @@ return [
     'uploaded' => 'O campo :attribute falhou ao fazer o upload.',
     'url' => 'O formato do campo :attribute é inválido.',
     'uuid' => 'O campo :attribute deve ser um UUID válido.',
-    'correct_data' => 'Please provide correct data.',
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +173,7 @@ return [
         'attribute-name' => [
             'rule-name' => 'Mensagem personalizada',
         ],
+        'full_name' => 'O nome completo deve incluir pelo menos um nome e um sobrenome.',
     ],
 
     /*
