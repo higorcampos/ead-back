@@ -16,5 +16,8 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'email_verification' => 'Verify Your Email Address',
+    'email_verification_message' => 'Thank you for registering with us! To complete the process, please click the button below to verify your email address.',
+    'verify_email' => 'Confirm Email Address',
+    'email_verified' => 'Email verified successfully.',
 ];

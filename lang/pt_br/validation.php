@@ -174,6 +174,7 @@ return [
             'rule-name' => 'Mensagem personalizada',
         ],
         'full_name' => 'O nome completo deve incluir pelo menos um nome e um sobrenome.',
+        'invalid_token' => 'Token inválido.',
     ],
 
     /*

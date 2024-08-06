@@ -17,5 +17,8 @@ return [
     'failed' => 'Essas credenciais não correspondem aos nossos registros.',
     'password' => 'A senha fornecida está incorreta.',
     'throttle' => 'Muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
-
+    'email_verification' => 'Verifique seu endereço de e-mail',
+    'email_verification_message' => 'Obrigado por se registrar conosco! Para concluir o processo, clique no botão abaixo para verificar seu endereço de e-mail.',
+    'verify_email' => 'Confirmar endereço de e-mail',
+    'email_verified' => 'E-mail verificado com sucesso.',
 ];

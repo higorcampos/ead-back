@@ -2,7 +2,10 @@
 
 namespace App\Services\User;
 
+use App\Models\EmailVerification;
+use App\Notifications\VerifyEmailNotification;
 use App\Repositories\User\UserRepositoryContract;
+use Illuminate\Support\Facades\Log;
 
 class UserService implements UserServiceContract
 {
@@ -20,9 +23,18 @@ class UserService implements UserServiceContract
 
     public function create(array $data): array
     {
-
         $data['password'] = bcrypt($data['password']);
-        $user = $this->userRepository->create($data);
-        return $user->toArray();
+
+        try {
+            $user = $this->userRepository->create($data);
+
+            $token = EmailVerification::generateToken($user->id);
+            $user->notify(new VerifyEmailNotification($token));
+
+            return $user->toArray();
+        } catch (\Exception $e) {
+            Log::error('Error creating user or sending verification email: ' . $e->getMessage());
+            throw new \Exception(__('exception.create_user'));
+        }
     }
 }

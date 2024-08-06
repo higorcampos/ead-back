@@ -117,7 +117,7 @@ abstract class BaseRepository implements BaseRepositoryContract
      * @param int $id
      * @return bool
      */
-    public function update(array $data, int $id): bool
+    public function update(array $data, string $id): bool
     {
         return $this->model->where('id', $id)->update($data);
     }

@@ -15,7 +15,7 @@ interface BaseRepositoryContract
     public function findWhereNotIn($field, array $values, $columns = ['*']): Collection;
     public function findWhereBetween($field, array $values, $columns = ['*']): Collection;
     public function create(array $data): Model;
-    public function update(array $data, int $id): bool;
+    public function update(array $data, string $id): bool;
     public function delete(int $id): bool;
     public function updateOrCreate(array $attributes, array $values): Model;
 }

@@ -17,11 +17,8 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        try {
-            $user = Auth::guard('api')->user();
-        } catch (\Exception $e) {
-            return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);
-        }
+
+        $user = Auth::guard('api')->user();
 
         if (!$user) {
             return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_UNAUTHORIZED);

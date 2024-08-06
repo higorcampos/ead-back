@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\EmailVerification;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 use Exception;
 
-class RegisterUserController extends Controller
+class SendVerificationController extends Controller
 {
     protected $userService;
 

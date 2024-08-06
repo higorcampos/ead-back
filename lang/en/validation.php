@@ -177,6 +177,7 @@ return [
             'rule-name' => 'custom-message',
         ],
         'full_name' => 'The name must include at least one name and one last name.',
+        'invalid_token' => 'Invalid token.'
     ],
 
     /*
