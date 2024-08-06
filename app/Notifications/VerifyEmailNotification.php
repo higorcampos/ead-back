@@ -37,8 +37,7 @@ class VerifyEmailNotification extends Notification
     {
         return (new MailMessage)
             ->subject(__('auth.email_verification'))
-            ->line(__('auth.email_verification_message'))
-            ->action(__('auth.email_verification'), env('APP_URL_FRONT') . '/email/verify/' . $this->token);
+            ->view('emails.verification', ['token' => $this->token]);
     }
 
     /**
@@ -48,8 +47,6 @@ class VerifyEmailNotification extends Notification
      */
     public function toArray(object $notifiable): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 }
