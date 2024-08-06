@@ -18,5 +18,6 @@ return [
     'deleted' => 'Excluído com sucesso.',
     'logged_out' => 'Deslogado com sucesso.',
     'unauthorized' => 'Não autorizado.',
+    'send'  => 'Enviado com sucesso.',
 
 ];

@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -39,7 +38,7 @@ class VerifyEmailNotification extends Notification
         return (new MailMessage)
             ->subject(__('auth.email_verification'))
             ->line(__('auth.email_verification_message'))
-            ->action(__('auth.email_verification'), url('/email/verify/' . $this->token));
+            ->action(__('auth.email_verification'), env('APP_URL_FRONT') . '/email/verify/' . $this->token);
     }
 
     /**

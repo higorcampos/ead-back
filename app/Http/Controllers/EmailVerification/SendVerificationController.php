@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\EmailVerification;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Services\User\UserServiceContract;
+use App\Models\EmailVerification;
+use App\Notifications\VerifyEmailNotification;
+use App\Repositories\User\UserRepositoryContract;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
@@ -12,18 +13,22 @@ use Exception;
 
 class SendVerificationController extends Controller
 {
-    protected $userService;
 
-    public function __construct(UserServiceContract $userService)
+    protected $userRepository;
+
+    public function __construct(UserRepositoryContract $userRepository)
     {
-        $this->userService = $userService;
+        $this->userRepository = $userRepository;
     }
 
-    public function __invoke(UserRequest $request): JsonResponse
+    public function __invoke($userId): JsonResponse
     {
         try {
-            $this->userService->create($request->all());
-            return response()->json(['message' => __('actions.created')], JsonResponse::HTTP_CREATED);
+            $token = EmailVerification::generateToken($userId);
+            $user = $this->userRepository->find($userId);
+            $user->notify(new VerifyEmailNotification($token));
+
+            return response()->json(['message' => __('actions.send')], JsonResponse::HTTP_CREATED);
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['message' => $e->getMessage()], $e->getCode() ?: JsonResponse::HTTP_INTERNAL_SERVER_ERROR);

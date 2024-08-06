@@ -25,7 +25,7 @@ class RegisterUserController extends Controller
             $this->userService->create($request->all());
             return response()->json(['message' => __('actions.created')], JsonResponse::HTTP_CREATED);
         } catch (Exception $e) {
-            Log::error($e->getMessage());
+            Log::error('Error creating user: ' . $e->getMessage());
             return response()->json(['message' => $e->getMessage()], $e->getCode() ?: JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

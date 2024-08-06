@@ -18,5 +18,6 @@ return [
     'deleted' => 'Deleted successfully.',
     'logged_out' => 'Logged out successfully.',
     'unauthorized' => 'Not Unauthorized.',
+    'send'  => 'Send successfully.',
 
 ];
