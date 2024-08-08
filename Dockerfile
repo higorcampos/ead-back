@@ -47,10 +47,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 USER application
 RUN composer update
 RUN composer install --no-dev && composer dumpautoload --optimize && composer clear-cache
-# RUN php artisan config:clear
-# RUN php artisan optimize
-# RUN php artisan optimize:clear
-# RUN composer dumpautoload
+RUN php artisan config:clear
+RUN php artisan optimize
+RUN composer dumpautoload
 # ======================================== FINISH
 USER root
 EXPOSE 80
