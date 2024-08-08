@@ -13,10 +13,9 @@ Route::get('/email/verify/{token}', VerifyController::class)->name('email.verify
 Route::post('email/send-verification/{userId}', SendVerificationController::class)->name('email.send-verification');
 
 Route::post('password/email', ForgotPasswordController::class)->name('password.email');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('password/reset', ResetPasswordController::class)->name('password.reset');
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', LogoutController::class)->name('auth.logout');
-    Route::middleware('permission:ADMINISTRATOR')->group(function () {
-    });
+    Route::middleware('permission:ADMINISTRATOR')->group(function () {});
 });

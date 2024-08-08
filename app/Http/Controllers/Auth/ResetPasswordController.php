@@ -3,39 +3,63 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\PasswordReset;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class ResetPasswordController extends Controller
 {
     /**
      * Reset the given user's password.
      */
-    public function reset(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:8',
+        try {
+            $validatedData = $request->validate([
+                'email' => ['required', 'email', 'exists:users,email'],
+                'token' => ['required', 'string'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'errors' => $e->errors(),
+            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $email = $validatedData['email'];
+        $token = $validatedData['token'];
+        $password = $validatedData['password'];;
+
+        $passwordReset = DB::table('password_reset_tokens')
+            ->where('email', $email)
+            ->where('token', $token)
+            ->first();
+
+        if (!$passwordReset) {
+            return response()->json([
+                'message' => __('validation.custom.invalid_token')
+            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        if (Carbon::parse($passwordReset->created_at)->addMinutes(60)->isPast()) {
+            return response()->json([
+                'message' => __('validation.custom.invalid_token')
+            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $user = User::where('email', $email)->first();
+
+        $user->update([
+            'password' => Hash::make($password),
         ]);
 
-        $status = Password::broker()->reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                    'remember_token' => Str::random(60),
-                ])->save();
+        DB::table('password_reset_tokens')->where('email', $email)->delete();
 
-                event(new PasswordReset($user));
-            }
-        );
-
-        return $status === Password::PASSWORD_RESET
-            ? response()->json(['message' => __($status)], 200)
-            : response()->json(['message' => __($status)], 400);
+        return response()->json([
+            'message' => __('passwords.password_reset_success')
+        ], JsonResponse::HTTP_OK);
     }
 }
