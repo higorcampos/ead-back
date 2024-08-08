@@ -21,4 +21,5 @@ return [
     'email_verification_message' => 'Obrigado por se registrar conosco! Para concluir o processo, clique no botão abaixo para verificar seu endereço de e-mail.',
     'verify_email' => 'Confirmar endereço de e-mail',
     'email_verified' => 'E-mail verificado com sucesso.',
+    'email_salutation' => 'Atenciosamente, :attribute',
 ];

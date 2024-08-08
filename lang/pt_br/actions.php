@@ -19,5 +19,5 @@ return [
     'logged_out' => 'Deslogado com sucesso.',
     'unauthorized' => 'Não autorizado.',
     'send'  => 'Enviado com sucesso.',
-
+    'hello' => 'Olá',
 ];

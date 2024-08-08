@@ -19,5 +19,6 @@ return [
     'logged_out' => 'Logged out successfully.',
     'unauthorized' => 'Not Unauthorized.',
     'send'  => 'Send successfully.',
+    'hello' => 'Hello',
 
 ];

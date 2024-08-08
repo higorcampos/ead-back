@@ -37,7 +37,10 @@ class VerifyEmailNotification extends Notification
     {
         return (new MailMessage)
             ->subject(__('auth.email_verification'))
-            ->view('emails.verification', ['token' => $this->token]);
+            ->greeting(__('actions.hello') . '!')
+            ->line(__('auth.email_verification_message'))
+            ->action(__('auth.verify_email'), env('APP_URL_FRONT') . '/email/verify/' . $this->token)
+            ->salutation(__('auth.email_salutation', ['attribute' => config('app.name')]));
     }
 
     /**

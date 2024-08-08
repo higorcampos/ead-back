@@ -20,4 +20,5 @@ return [
     'email_verification_message' => 'Thank you for registering with us! To complete the process, please click the button below to verify your email address.',
     'verify_email' => 'Confirm Email Address',
     'email_verified' => 'Email verified successfully.',
+    'email_salutation' => 'Regards, :attribute',
 ];
