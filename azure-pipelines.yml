@@ -1,7 +1,3 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - main
 
@@ -10,20 +6,34 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  dockerHubImageName: 'seu-usuario/docker-imagem' # Substitua 'seu-usuario/docker-imagem' pelo nome da sua imagem no Docker Hub
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: Build and Push Docker Image
   jobs:
-  - job: Build
-    displayName: Build
+  - job: BuildAndPush
+    displayName: Build and Push
     pool:
       vmImage: ubuntu-latest
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Login to Docker Hub
+      inputs:
+        containerRegistry: 'docker-hub-connection' # Use o nome da sua conexão de serviço aqui
+        command: login
+
+    - task: Docker@2
+      displayName: Build Docker Image
       inputs:
         command: build
         dockerfile: 'Dockerfile'
         tags: |
-          $(tag)
+          $(dockerHubImageName):$(tag)
+    
+    - task: Docker@2
+      displayName: Push Docker Image to Docker Hub
+      inputs:
+        command: push
+        tags: |
+          $(dockerHubImageName):$(tag)
