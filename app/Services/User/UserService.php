@@ -3,8 +3,10 @@
 namespace App\Services\User;
 
 use App\Models\EmailVerification;
+use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
 use App\Repositories\User\UserRepositoryContract;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class UserService implements UserServiceContract
@@ -36,5 +38,10 @@ class UserService implements UserServiceContract
             Log::error('Error creating user or sending verification email: ' . $e->getMessage());
             throw new \Exception(__('exception.create_user'));
         }
+    }
+
+    public function getUser(): User
+    {
+        return Auth::guard('api')->user();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\GetUserController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -17,5 +18,6 @@ Route::post('password/reset', ResetPasswordController::class)->name('password.re
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', LogoutController::class)->name('auth.logout');
+    Route::get('/user', GetUserController::class)->name('auth.get.user');
     Route::middleware('permission:ADMINISTRATOR')->group(function () {});
 });
