@@ -42,10 +42,6 @@ COPY --chown=application routes routes/
 COPY --chown=application storage storage/
 COPY --chown=application tests tests/
 
-
-# ======================================== SET SUPERVISOR AND NGINX
-COPY /supervisor/nginx-vhost.conf /opt/docker/etc/nginx/vhost.conf
-
 # ======================================== INSTALL COMPOSER DEPENDENCIES
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 USER application
@@ -56,4 +52,4 @@ RUN php artisan optimize
 RUN composer dumpautoload
 # ======================================== FINISH
 USER root
-EXPOSE 80
+EXPOSE 8000
