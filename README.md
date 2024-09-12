@@ -119,3 +119,8 @@
     - Ver informações públicas sobre cursos
     - Inscrever-se em cursos (se permitido)
     - Acessar materiais gratuitos (se disponível)
+
+#### Config
+
+1. **Passport client**
+   php artisan passport:client --password
