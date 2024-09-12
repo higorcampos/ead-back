@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
             );
 
             $user = User::where('email', $email)->first();
-            $user->notify(new ForgotPasswordNotification($token));
+            $user->notify(new ForgotPasswordNotification($token, $email));
 
             return response()->json(
                 ['message' => __('passwords.sent')],

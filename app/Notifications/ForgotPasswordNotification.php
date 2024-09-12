@@ -12,13 +12,15 @@ class ForgotPasswordNotification extends Notification
     use Queueable;
 
     protected $token;
+    protected $email;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($token)
+    public function __construct($token, $email)
     {
         $this->token = $token;
+        $this->email = $email;
     }
 
     /**
@@ -40,7 +42,7 @@ class ForgotPasswordNotification extends Notification
             ->subject(__('passwords.password_reset_subject'))
             ->greeting(__('actions.hello') . '!')
             ->line(__('passwords.password_reset_message'))
-            ->action(__('passwords.reset_password'), env('APP_URL_FRONT') . '/password/reset/' . $this->token)
+            ->action(__('passwords.reset_password'), env('APP_URL_FRONT') . '/password/reset/' . $this->token . '/' . $this->email)
             ->line(__('passwords.password_reset_warning'))
             ->salutation(__('passwords.email_salutation', ['attribute' => config('app.name')]));
     }

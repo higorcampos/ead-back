@@ -169,7 +169,7 @@
                 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                         <td class="header" style="padding: 25px 0;">
-                            <a href="{{ url('/') }}">EAD</a>
+                            <a href="{{ url('/') }}">SABIUS</a>
                         </td>
                     </tr>
                     <tr>
