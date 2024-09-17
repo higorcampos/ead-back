@@ -13,8 +13,8 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepositoryCon
         parent::__construct($user);
     }
 
-    public function getUsersByRoles(array $roles): LengthAwarePaginator
+    public function getUsersByRoles(array $roles, int $pageSize): LengthAwarePaginator
     {
-        return $this->model->whereIn('role', $roles)->orderBy('name', 'ASC')->paginate();
+        return $this->model->whereIn('role', $roles)->orderBy('name', 'ASC')->paginate($pageSize);
     }
 }

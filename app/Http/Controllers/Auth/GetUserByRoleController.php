@@ -20,8 +20,10 @@ class GetUserByRoleController extends Controller
 
     public function __invoke(): JsonResponse
     {
+        $pageSize = (int) request()->get('pageSize', 15);
+
         try {
-            $user = $this->userService->getUserByRole();
+            $user = $this->userService->getUserByRole($pageSize);
             return response()->json($user, JsonResponse::HTTP_OK);
         } catch (Exception $e) {
             Log::error('Error get user' . $e->getMessage());

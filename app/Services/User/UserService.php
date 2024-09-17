@@ -47,7 +47,7 @@ class UserService implements UserServiceContract
         return Auth::guard('api')->user();
     }
 
-    public function getUserByRole(): LengthAwarePaginator
+    public function getUserByRole(int $pageSize): LengthAwarePaginator
     {
         $user = Auth::guard('api')->user();
 
@@ -62,6 +62,6 @@ class UserService implements UserServiceContract
             default         => [],
         };
 
-        return $this->userRepository->getUsersByRoles($findUserByRole);
+        return $this->userRepository->getUsersByRoles($findUserByRole, $pageSize);
     }
 }
