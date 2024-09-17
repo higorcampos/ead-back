@@ -20,4 +20,21 @@ class UserRoleEnums
             self::SUPPORT,
         ];
     }
+
+    public static function rolesPermissionTeacher(): array
+    {
+        return [
+            self::STUDENT,
+            self::GUEST,
+        ];
+    }
+
+    public static function rolesPermissionSUPPORT(): array
+    {
+        return [
+            self::TEACHER,
+            self::STUDENT,
+            self::GUEST,
+        ];
+    }
 }

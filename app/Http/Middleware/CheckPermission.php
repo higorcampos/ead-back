@@ -15,11 +15,13 @@ class CheckPermission
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $permission): Response
+    public function handle(Request $request, Closure $next, $permissions): Response
     {
         $user = Auth::guard('api')->user();
 
-        if ($user->role != $permission) {
+        $permissionsArray = explode('|', $permissions);
+
+        if (!in_array($user->role, $permissionsArray)) {
             return response()->json(['message' => __('actions.unauthorized')], JsonResponse::HTTP_FORBIDDEN);
         }
 

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 use Exception;
 
-class GetUserController extends Controller
+class GetUserByRoleController extends Controller
 {
     protected $userService;
 
@@ -21,7 +21,7 @@ class GetUserController extends Controller
     public function __invoke(): JsonResponse
     {
         try {
-            $user = $this->userService->getUser();
+            $user = $this->userService->getUserByRole();
             return response()->json($user, JsonResponse::HTTP_OK);
         } catch (Exception $e) {
             Log::error('Error get user' . $e->getMessage());
