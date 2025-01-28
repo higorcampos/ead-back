@@ -64,4 +64,9 @@ class UserService implements UserServiceContract
 
         return $this->userRepository->getUsersByRoles($findUserByRole, $pageSize);
     }
+
+    public function deleteUser(string $id): bool
+    {
+        return $this->userRepository->delete($id);
+    }
 }

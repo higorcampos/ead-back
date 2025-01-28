@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\DeleteUserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\GetUserByRoleController;
 use App\Http\Controllers\Auth\GetUserController;
@@ -24,5 +25,6 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['permission:ADMINISTRATOR|TEACHER|SUPPORT'])->group(function () {
         Route::get('/users', GetUserByRoleController::class)->name('auth.get.all.users');
+        Route::delete('/users/{id}', DeleteUserController::class)->name('auth.delete.user');
     });
 });

@@ -126,7 +126,7 @@ abstract class BaseRepository implements BaseRepositoryContract
      * @param int $id
      * @return bool
      */
-    public function delete(int $id): bool
+    public function delete(string $id): bool
     {
         return $this->model->where('id', $id)->delete();
     }

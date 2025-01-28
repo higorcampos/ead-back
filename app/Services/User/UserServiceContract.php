@@ -11,4 +11,5 @@ interface UserServiceContract
     public function create(array $data): array;
     public function getUser(): User;
     public function getUserByRole(int $pageSize): LengthAwarePaginator;
+    public function deleteUser(string $id): bool;
 }
